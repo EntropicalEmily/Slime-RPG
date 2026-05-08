@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqtim21ux142"]
+
+[ext_resource type="PackedScene" uid="uid://cv4lx7838hy0c" path="res://scenes/characters/player.tscn" id="1_imq4f"]
+[ext_resource type="Texture2D" uid="uid://d0e5x3nywnowe" path="res://assets/sprites/cave3.png" id="2_tigvq"]
+[ext_resource type="PackedScene" uid="uid://dko6owvh4k10i" path="res://scenes/characters/veldora.tscn" id="3_tigvq"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tigvq"]
+vertices = PackedVector2Array(112.85156, -65.84375, 132, -74.453125, 132, -57.40625, 121.671875, -47.078125, 130.89844, 70.9375, 134.52344, 80, 117.75, 80, -116.640625, -43.96875, -150.53125, -47.828125, -140.39063, -70.88281, -122.203125, -68.00781, -73.109375, -50.976563, -85.27344, -22.710938, -63.273438, -52.078125, 132.60156, -33.140625, 120.52344, -23.070313, 72.15625, -54.796875, -95.03906, 87.97656, -140, 84.07031, -140, 69.77344, -106.38281, 60.867188, -65.92969, 81.96094, 9.1796875, 93, 7.1796875, 102.96875, -26.242188, 102.02344, -28.179688, 95.22656, 39.039063, -60.828125, 98.03125, -77.6875, -39.421875, -63.929688, -35.46875, -71.8125, -14.78125, -65.89844, -70.796875, 0.03125, -100.3125, 51.773438, -84.02344, 43.632813, -58.320313, -65.921875, 48.0625, -66.84375, 134.78125, -8.7890625, 128.96094, 2.84375, 50.007813, 81.96094, 34.742188, 86.03125, 22.40625, 89.11719, -83.00781, 17.34375, 4.078125, -80.78906, 92.03125, 81.96875, 128.92188, 44.179688, 137.84375, 58.039063, 106.86719, 85.921875, 19.5, 93, 67.03906, 86.96875, 132.96875, 27.960938)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(7, 8, 9, 10, 11), PackedInt32Array(12, 7, 11, 13), PackedInt32Array(3, 14, 15, 16), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26), PackedInt32Array(16, 27, 0, 3), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(21, 20, 32, 33, 25), PackedInt32Array(13, 34, 28, 31), PackedInt32Array(26, 35, 16, 15, 36, 37, 38, 39, 40), PackedInt32Array(41, 31, 30, 42, 26, 25, 33), PackedInt32Array(43, 44, 45, 4, 6, 46), PackedInt32Array(31, 12, 13), PackedInt32Array(40, 47, 22, 26), PackedInt32Array(48, 38, 37, 49, 44, 43)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-27, 103, -29, 96, -66, 83, -95, 89, -141, 85, -141, 69, -107, 60, -101, 51, -85, 43, -84, 17, -72, 0, -86, -22, -117, -43, -152, -47, -141, -72, -122, -69, -73, -52, -64, -53, -59, -67, -40, -65, -36, -73, -15, -67, 4, -82, 39, -62, 48, -68, 72, -56, 98, -79, 113, -67, 133, -76, 133, -57, 123, -47, 134, -33, 122, -23, 136, -9, 130, 3, 134, 28, 130, 44, 139, 58, 132, 71, 136, 81, 118, 81, 107, 87, 92, 83, 67, 88, 50, 83, 35, 87, 23, 90, 20, 94, 10, 94, 8, 104)])
+agent_radius = 1.0
+
+[node name="veldora-level" type="Node2D" unique_id=1205198317]
+
+[node name="Player" parent="." unique_id=855222392 instance=ExtResource("1_imq4f")]
+position = Vector2(-8, 94)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=122806833]
+zoom = Vector2(4.52, 4.52)
+limit_left = -158
+limit_top = -102
+limit_right = 158
+limit_bottom = 104
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1699607817]
+texture = ExtResource("2_tigvq")
+
+[node name="veldora" parent="." unique_id=1141295775 instance=ExtResource("3_tigvq")]
+position = Vector2(-114, 14)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=663224871]
+navigation_polygon = SubResource("NavigationPolygon_tigvq")
