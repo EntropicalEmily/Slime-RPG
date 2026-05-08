@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cv4lx7838hy0c"]
+
+[ext_resource type="Texture2D" uid="uid://cvpocqsolyb60" path="res://assets/sprites/slime.png" id="1_rp718"]
+[ext_resource type="Script" uid="uid://dr6isc7mt3qao" path="res://scenes/characters/player.gd" id="1_yewv4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yewv4"]
+
+[node name="Player" type="CharacterBody2D" unique_id=855222392]
+z_index = 200
+script = ExtResource("1_yewv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1456409352]
+shape = SubResource("CircleShape2D_yewv4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2021268286]
+texture = ExtResource("1_rp718")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1729309152]
+path_postprocessing = 1
+debug_enabled = true
+debug_path_custom_color = Color(0.15686275, 1, 1, 1)

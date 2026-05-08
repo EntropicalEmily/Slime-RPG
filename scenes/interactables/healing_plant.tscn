@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b886akv48dyfn"]
+
+[ext_resource type="Texture2D" uid="uid://b6wxh1x0ixb6t" path="res://assets/sprites/healing-plant.png" id="1_ordpm"]
+[ext_resource type="Script" uid="uid://dmfbxt1ud2r3x" path="res://scripts/healing_plant.gd" id="1_t5lqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oent6"]
+size = Vector2(8, 6)
+
+[node name="healing-plant" type="Area2D" unique_id=243725146]
+script = ExtResource("1_t5lqg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=638600381]
+texture = ExtResource("1_ordpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1128239802]
+shape = SubResource("RectangleShape2D_oent6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

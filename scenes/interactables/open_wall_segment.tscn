@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bjddb3fevpebj"]
+
+[ext_resource type="Texture2D" uid="uid://belsy333js7li" path="res://assets/sprites/cave-part.png" id="1_u31qi"]
+[ext_resource type="Script" uid="uid://lgbgfgspnhem" path="res://scripts/open_wall_segment.gd" id="2_q6my3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u31qi"]
+vertices = PackedVector2Array(28, 18, -28.523438, 18, -27.28125, 14.90625, -19.101563, 13.8984375, 28, 12.6796875, 14.890625, 7.640625, -17, -3.90625, 16.992188, -6.0234375, -16.070313, -17, 16.078125, -17)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 4, 3, 6), PackedInt32Array(7, 5, 6, 8, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-28, 14, -20, 13, -18, -4, -17, -18, 17, -18, 18, -6, 16, 7, 29, 12, 29, 19, -30, 19)])
+agent_radius = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6my3"]
+size = Vector2(32, 28)
+
+[node name="OpenWallSegment" type="Sprite2D" unique_id=10634929]
+texture = ExtResource("1_u31qi")
+script = ExtResource("2_q6my3")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1047441487]
+navigation_polygon = SubResource("NavigationPolygon_u31qi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1700142721]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2056134793]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_q6my3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

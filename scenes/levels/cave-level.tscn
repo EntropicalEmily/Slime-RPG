@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cfkvb60rj42bs"]
+
+[ext_resource type="Script" uid="uid://b7tjw7fhhmj63" path="res://scripts/cave_level.gd" id="1_b0hgd"]
+[ext_resource type="PackedScene" uid="uid://cv4lx7838hy0c" path="res://scenes/characters/player.tscn" id="1_u7eqk"]
+[ext_resource type="PackedScene" uid="uid://b886akv48dyfn" path="res://scenes/interactables/healing_plant.tscn" id="2_emaja"]
+[ext_resource type="AudioStream" uid="uid://ibqjqo5yi8un" path="res://assets/SFX/nomnom.mp3" id="3_emaja"]
+[ext_resource type="Texture2D" uid="uid://c77g0oq2jm6xm" path="res://assets/sprites/cave.png" id="4_cydnk"]
+[ext_resource type="AudioStream" uid="uid://yqst5fmlwxu3" path="res://assets/SFX/wall-collapsing.mp3" id="6_6ks1p"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_b0hgd"]
+vertices = PackedVector2Array(-102.14844, 86.00781, -135.88281, 93.296875, -125.59375, 83, -125.96875, -48.96875, -131.63281, -75.40625, -112.0625, -67.953125, 91.34375, -71.03906, 136, -34.617188, 142.61719, -27.039063, 128.97656, -13.390625, 35.828125, 72.97656, 55.976563, -65.99219, 134.97656, 67.046875, 133.07031, 90.07031, 110.17969, 91.96875, 78.27344, 77.02344, 124.88281, 23.609375, 112.8125, -83.72656, 130.27344, -65.3125, 136, -57.65625, 130.00781, 5.2421875, 134.77344, 15.703125, -35.671875, 79.96875, -127.96094, 35.898438, -133.8125, 22.226563, -122.859375, 11.28125, -9.828125, -65.96875, 8.140625, -74.953125, -15.84375, 96.82031, -135.89844, 72.671875, -80.92969, -75.97656, -130.99219, -14.109375, -130, -33.828125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(6, 17, 18, 19, 7), PackedInt32Array(20, 21, 16, 10), PackedInt32Array(10, 22, 0, 23, 24, 25, 26, 27, 11), PackedInt32Array(10, 28, 22), PackedInt32Array(2, 29, 23, 0), PackedInt32Array(16, 15, 10), PackedInt32Array(9, 20, 10), PackedInt32Array(5, 30, 26, 25, 31, 32, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-133, -77, -112, -69, -81, -77, -10, -67, 8, -76, 56, -67, 91, -72, 113, -85, 131, -66, 137, -58, 137, -35, 144, -27, 130, -13, 131, 5, 136, 16, 126, 24, 136, 67, 134, 91, 110, 93, 78, 78, 36, 74, -16, 98, -36, 81, -102, 87, -139, 95, -127, 83, -137, 73, -129, 36, -135, 22, -124, 11, -132, -14, -131, -34, -127, -49)])
+agent_radius = 1.0
+
+[node name="cave-level" type="Node2D" unique_id=62157145]
+script = ExtResource("1_b0hgd")
+
+[node name="Player" parent="." unique_id=855222392 instance=ExtResource("1_u7eqk")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1611978126]
+zoom = Vector2(4.52, 4.52)
+limit_left = -155
+limit_top = -97
+limit_right = 154
+limit_bottom = 99
+
+[node name="Healing-Plants" type="Node2D" parent="." unique_id=1037873291]
+
+[node name="healing-plant" parent="Healing-Plants" unique_id=243725146 instance=ExtResource("2_emaja")]
+position = Vector2(105, 56)
+
+[node name="healing-plant2" parent="Healing-Plants" unique_id=1282183656 instance=ExtResource("2_emaja")]
+position = Vector2(12, 27)
+
+[node name="healing-plant3" parent="Healing-Plants" unique_id=1946603068 instance=ExtResource("2_emaja")]
+position = Vector2(-61, -27)
+
+[node name="healing-plant4" parent="Healing-Plants" unique_id=1459288623 instance=ExtResource("2_emaja")]
+position = Vector2(-68, 56)
+
+[node name="healing-plant5" parent="Healing-Plants" unique_id=1766510004 instance=ExtResource("2_emaja")]
+position = Vector2(76, -32)
+
+[node name="healing-plant6" parent="Healing-Plants" unique_id=1890592731 instance=ExtResource("2_emaja")]
+position = Vector2(70, 19)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1880403547]
+z_index = -200
+texture = ExtResource("4_cydnk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=220166064]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=976427203]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=675015764]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 1.0
+offset_right = 20.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NomNomSound" type="AudioStreamPlayer2D" parent="." unique_id=232153472]
+stream = ExtResource("3_emaja")
+volume_db = 6.0
+
+[node name="WallCollapsingSound" type="AudioStreamPlayer2D" parent="." unique_id=942824976]
+position = Vector2(-9, -83)
+stream = ExtResource("6_6ks1p")
+volume_db = 10.0
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1584772540]
+navigation_polygon = SubResource("NavigationPolygon_b0hgd")
