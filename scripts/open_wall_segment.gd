@@ -12,4 +12,4 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 			call_deferred("win")
 
 func win():
-	get_tree().change_scene_to_file("res://scenes/levels/you_win_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/veldora_level.tscn")

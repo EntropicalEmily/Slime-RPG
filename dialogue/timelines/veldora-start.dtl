@@ -1,0 +1,5 @@
+join veldora leftmost
+veldora: Please free me from this prison...
+veldora: or I'll kill everyone you love!
+[wait time="1.0"]
+do gamemanager.leaveDialogue()

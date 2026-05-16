@@ -6,6 +6,9 @@ extends Node2D
 var open_wall_scene = preload("res://scenes/interactables/open_wall_segment.tscn")
 
 
+var veldora_room = preload("res://scenes/levels/veldora_level.tscn")
+
+
 
 var you_win_scene = preload("res://scenes/levels/you_win_screen.tscn")
 
@@ -15,7 +18,7 @@ func update_label():
 
 
 func change_scene():
-	get_tree().change_scene_to_file("res://scenes/levels/you_win_screen.tscn")
+	queue_free()
 
 func spawn_wall_opening():
 	wall_collapsing_sound.play()

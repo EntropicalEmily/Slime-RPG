@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dko6owvh4k10i"]
 
+[ext_resource type="Script" uid="uid://dolawm141xk4l" path="res://scripts/veldora.gd" id="1_kxavc"]
 [ext_resource type="Texture2D" uid="uid://cw62dwol4y5ex" path="res://assets/sprites/dragon-veldora-Sheet.png" id="1_ve4uq"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kxavc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kgfc8"]
 atlas = ExtResource("1_ve4uq")
@@ -26,12 +25,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="veldora" type="StaticBody2D" unique_id=1141295775]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxavc"]
+radius = 40.4475
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755472072]
-shape = SubResource("CircleShape2D_kxavc")
+[node name="veldora" type="StaticBody2D" unique_id=1141295775]
+input_pickable = true
+script = ExtResource("1_kxavc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=148945625]
 sprite_frames = SubResource("SpriteFrames_pxmp2")
 autoplay = "default"
 frame_progress = 0.28577024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755472072]
+position = Vector2(-4, 0)
+shape = SubResource("CircleShape2D_kxavc")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

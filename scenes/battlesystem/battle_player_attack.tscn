@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://djg2ogjmbmg55"]
+
+[ext_resource type="Script" uid="uid://diiqd127c4brn" path="res://scripts/battle_player_attack.gd" id="1_a2tbc"]
+[ext_resource type="Texture2D" uid="uid://bhtsy72qlob3o" path="res://assets/sprites/undertale-attack-bar.png" id="1_euijo"]
+[ext_resource type="Texture2D" uid="uid://c6svap312s82k" path="res://assets/sprites/hit-bar-undertale.png" id="2_a2tbc"]
+[ext_resource type="Script" uid="uid://dytilk1cnsc41" path="res://scripts/cursor_bar.gd" id="3_jbi2t"]
+[ext_resource type="Texture2D" uid="uid://c8i7o2o1ul62q" path="res://assets/sprites/undertale-cursor-bar.png" id="4_de413"]
+[ext_resource type="Shader" uid="uid://d3q13o6odvu7" path="res://shader/battle_player_attack.gdshader" id="5_jbi2t"]
+[ext_resource type="AudioStream" uid="uid://li3hse7mv3hq" path="res://assets/SFX/damage-sound.mp3" id="7_de413"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s4ms"]
+size = Vector2(4.058348, 24.018)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_de413"]
+shader = ExtResource("5_jbi2t")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bduy"]
+size = Vector2(0.9812679, 24.006851)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j268g"]
+
+[node name="BattlePlayerAttack" type="Node2D" unique_id=1426458802]
+script = ExtResource("1_a2tbc")
+
+[node name="BackgroundBar" type="Sprite2D" parent="." unique_id=1283716171]
+texture = ExtResource("1_euijo")
+
+[node name="HitBar" type="Area2D" parent="." unique_id=1653761688]
+position = Vector2(-38, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="HitBar" unique_id=1781187856]
+texture = ExtResource("2_a2tbc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBar" unique_id=997328073]
+position = Vector2(0.02671814, 0.07777119)
+shape = SubResource("RectangleShape2D_5s4ms")
+
+[node name="CursorBar" type="CharacterBody2D" parent="." unique_id=1344899685]
+script = ExtResource("3_jbi2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="CursorBar" unique_id=1805237916]
+material = SubResource("ShaderMaterial_de413")
+texture = ExtResource("4_de413")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorBar" unique_id=724146849]
+position = Vector2(0.0022821426, -0.003426075)
+shape = SubResource("RectangleShape2D_2bduy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CursorBar" unique_id=1143129861]
+stream = ExtResource("7_de413")
+volume_db = 6.0
+
+[node name="EdgeLeft" type="Area2D" parent="." unique_id=246690532]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeLeft" unique_id=1655713118]
+position = Vector2(-72.90985, 0.13129044)
+shape = SubResource("RectangleShape2D_j268g")
+
+[node name="EdgeRight" type="Area2D" parent="." unique_id=72953548]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeRight" unique_id=407035625]
+position = Vector2(72.883286, 1.5058346)
+shape = SubResource("RectangleShape2D_j268g")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=867633082]
+zoom = Vector2(3.78, 3.78)
+
+[connection signal="body_entered" from="HitBar" to="." method="_on_hit_bar_body_entered"]
+[connection signal="body_exited" from="HitBar" to="." method="_on_hit_bar_body_exited"]
+[connection signal="body_entered" from="EdgeLeft" to="." method="_on_edge_left_body_entered"]
+[connection signal="body_entered" from="EdgeRight" to="." method="_on_edge_right_body_entered"]

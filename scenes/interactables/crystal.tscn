@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c23iec7705sqg"]
+
+[ext_resource type="Script" uid="uid://dmfbxt1ud2r3x" path="res://scripts/healing_plant.gd" id="1_0i4g7"]
+[ext_resource type="Texture2D" uid="uid://bgclrjn844e2s" path="res://assets/sprites/crystal.png" id="2_0i4g7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oent6"]
+size = Vector2(8, 14)
+
+[node name="crystal" type="Area2D" unique_id=243725146]
+script = ExtResource("1_0i4g7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=638600381]
+texture = ExtResource("2_0i4g7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1128239802]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_oent6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

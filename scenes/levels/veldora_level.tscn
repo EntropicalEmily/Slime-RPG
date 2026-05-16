@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://cqtim21ux142"]
 
+[ext_resource type="Script" uid="uid://5nsgf1f1vwvj" path="res://scenes/levels/veldora_level.gd" id="1_2iy20"]
 [ext_resource type="PackedScene" uid="uid://cv4lx7838hy0c" path="res://scenes/characters/player.tscn" id="1_imq4f"]
 [ext_resource type="Texture2D" uid="uid://d0e5x3nywnowe" path="res://assets/sprites/cave3.png" id="2_tigvq"]
 [ext_resource type="PackedScene" uid="uid://dko6owvh4k10i" path="res://scenes/characters/veldora.tscn" id="3_tigvq"]
+[ext_resource type="PackedScene" uid="uid://c23iec7705sqg" path="res://scenes/interactables/crystal.tscn" id="4_55v38"]
+[ext_resource type="AudioStream" uid="uid://ibqjqo5yi8un" path="res://assets/SFX/nomnom.mp3" id="5_2iy20"]
+[ext_resource type="AudioStream" uid="uid://yqst5fmlwxu3" path="res://assets/SFX/wall-collapsing.mp3" id="6_ddnrv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tigvq"]
 vertices = PackedVector2Array(112.85156, -65.84375, 132, -74.453125, 132, -57.40625, 121.671875, -47.078125, 130.89844, 70.9375, 134.52344, 80, 117.75, 80, -116.640625, -43.96875, -150.53125, -47.828125, -140.39063, -70.88281, -122.203125, -68.00781, -73.109375, -50.976563, -85.27344, -22.710938, -63.273438, -52.078125, 132.60156, -33.140625, 120.52344, -23.070313, 72.15625, -54.796875, -95.03906, 87.97656, -140, 84.07031, -140, 69.77344, -106.38281, 60.867188, -65.92969, 81.96094, 9.1796875, 93, 7.1796875, 102.96875, -26.242188, 102.02344, -28.179688, 95.22656, 39.039063, -60.828125, 98.03125, -77.6875, -39.421875, -63.929688, -35.46875, -71.8125, -14.78125, -65.89844, -70.796875, 0.03125, -100.3125, 51.773438, -84.02344, 43.632813, -58.320313, -65.921875, 48.0625, -66.84375, 134.78125, -8.7890625, 128.96094, 2.84375, 50.007813, 81.96094, 34.742188, 86.03125, 22.40625, 89.11719, -83.00781, 17.34375, 4.078125, -80.78906, 92.03125, 81.96875, 128.92188, 44.179688, 137.84375, 58.039063, 106.86719, 85.921875, 19.5, 93, 67.03906, 86.96875, 132.96875, 27.960938)
@@ -11,22 +15,76 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-27, 103, -29, 96, -66,
 agent_radius = 1.0
 
 [node name="veldora-level" type="Node2D" unique_id=1205198317]
+script = ExtResource("1_2iy20")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1699607817]
+texture = ExtResource("2_tigvq")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=663224871]
+navigation_polygon = SubResource("NavigationPolygon_tigvq")
+
+[node name="crystals" type="Node2D" parent="." unique_id=287845225]
+
+[node name="crystal" parent="crystals" unique_id=243725146 instance=ExtResource("4_55v38")]
+position = Vector2(-12, -40)
+
+[node name="crystal2" parent="crystals" unique_id=1421963436 instance=ExtResource("4_55v38")]
+position = Vector2(82, -27)
+
+[node name="crystal3" parent="crystals" unique_id=1840394688 instance=ExtResource("4_55v38")]
+position = Vector2(89, 48)
+
+[node name="crystal4" parent="crystals" unique_id=414388231 instance=ExtResource("4_55v38")]
+position = Vector2(17, 29)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819284829]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=182182610]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=660693104]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 1.0
+offset_right = 20.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NomNomSound" type="AudioStreamPlayer2D" parent="." unique_id=1477131364]
+stream = ExtResource("5_2iy20")
+volume_db = 6.0
+
+[node name="WallCollapsingSound" type="AudioStreamPlayer2D" parent="." unique_id=1695665538]
+position = Vector2(-9, -83)
+stream = ExtResource("6_ddnrv")
+volume_db = 10.0
+
+[node name="veldora" parent="." unique_id=1141295775 instance=ExtResource("3_tigvq")]
+z_index = 3000
+position = Vector2(-114, 14)
 
 [node name="Player" parent="." unique_id=855222392 instance=ExtResource("1_imq4f")]
 position = Vector2(-8, 94)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=122806833]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1819884585]
 zoom = Vector2(4.52, 4.52)
 limit_left = -158
 limit_top = -102
 limit_right = 158
 limit_bottom = 104
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1699607817]
-texture = ExtResource("2_tigvq")
-
-[node name="veldora" parent="." unique_id=1141295775 instance=ExtResource("3_tigvq")]
-position = Vector2(-114, 14)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=663224871]
-navigation_polygon = SubResource("NavigationPolygon_tigvq")
+[connection signal="mouse_entered" from="veldora" to="veldora" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="veldora" to="veldora" method="_on_mouse_exited"]
