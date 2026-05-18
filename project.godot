@@ -27,6 +27,7 @@ directories/dch_directory={
 "veldora": "res://dialogue/characters/veldora.dch"
 }
 directories/dtl_directory={
+"battle-start": "res://dialogue/timelines/battle-start.dtl",
 "veldora-start": "res://dialogue/timelines/veldora-start.dtl"
 }
 layout/style_directory={}

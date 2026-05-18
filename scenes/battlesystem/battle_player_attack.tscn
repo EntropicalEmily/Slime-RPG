@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://diiqd127c4brn" path="res://scripts/battle_player_attack.gd" id="1_a2tbc"]
 [ext_resource type="Texture2D" uid="uid://bhtsy72qlob3o" path="res://assets/sprites/undertale-attack-bar.png" id="1_euijo"]
 [ext_resource type="Texture2D" uid="uid://c6svap312s82k" path="res://assets/sprites/hit-bar-undertale.png" id="2_a2tbc"]
+[ext_resource type="Theme" uid="uid://bhq21pikgtl2j" path="res://test/new_theme.tres" id="2_j268g"]
 [ext_resource type="Script" uid="uid://dytilk1cnsc41" path="res://scripts/cursor_bar.gd" id="3_jbi2t"]
 [ext_resource type="Texture2D" uid="uid://dgudmcacbr5wf" path="res://assets/sprites/yellow-hit-bar-undertale.png" id="4_2bduy"]
 [ext_resource type="Texture2D" uid="uid://c8i7o2o1ul62q" path="res://assets/sprites/undertale-cursor-bar.png" id="4_de413"]
@@ -29,7 +30,15 @@ size = Vector2(0.9812679, 24.006851)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j268g"]
 
 [node name="BattlePlayerAttack" type="Node2D" unique_id=1426458802]
+scale = Vector2(5, 5)
 script = ExtResource("1_a2tbc")
+
+[node name="Panel" type="Panel" parent="." unique_id=2088990082]
+offset_left = -100.36867
+offset_top = -22.941422
+offset_right = 109.46153
+offset_bottom = 27.573387
+theme = ExtResource("2_j268g")
 
 [node name="BackgroundBar" type="Sprite2D" parent="." unique_id=1283716171]
 texture = ExtResource("1_euijo")
@@ -91,9 +100,6 @@ shape = SubResource("RectangleShape2D_j268g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeRight" unique_id=407035625]
 position = Vector2(72.883286, 1.5058346)
 shape = SubResource("RectangleShape2D_j268g")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=867633082]
-zoom = Vector2(3.78, 3.78)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=492596667]
 stream = ExtResource("8_5s4ms")

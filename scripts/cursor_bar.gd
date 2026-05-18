@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var green_hit_bar: Area2D = $"../GreenHitBar"
 
-var initial_speed: float = 1.3
+var initial_speed: float = 6
 var speed: float
 var direction: Vector2
 var isMoving: bool = true
