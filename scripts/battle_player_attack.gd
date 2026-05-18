@@ -14,9 +14,24 @@ func _on_edge_right_body_entered(body: Node2D) -> void:
 
 
 func _on_hit_bar_body_entered(_body: Node2D) -> void:
-	print("meow")
-	cursor_bar.isOnTarget = true
+	cursor_bar.isOnGreenTarget = true
 
 
 func _on_hit_bar_body_exited(_body: Node2D) -> void:
-	cursor_bar.isOnTarget = false
+	cursor_bar.isOnGreenTarget = false
+
+
+func _on_yellow_hit_bar_left_body_entered(_body: Node2D) -> void:
+	cursor_bar.isOnYellowTarget = true
+
+
+func _on_yellow_hit_bar_right_body_entered(_body: Node2D) -> void:
+	cursor_bar.isOnYellowTarget = true
+
+
+func _on_yellow_hit_bar_right_body_exited(_body: Node2D) -> void:
+	cursor_bar.isOnYellowTarget = false
+
+
+func _on_yellow_hit_bar_left_body_exited(_body: Node2D) -> void:
+	cursor_bar.isOnYellowTarget = false

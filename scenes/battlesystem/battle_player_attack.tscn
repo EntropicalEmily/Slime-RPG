@@ -4,12 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://bhtsy72qlob3o" path="res://assets/sprites/undertale-attack-bar.png" id="1_euijo"]
 [ext_resource type="Texture2D" uid="uid://c6svap312s82k" path="res://assets/sprites/hit-bar-undertale.png" id="2_a2tbc"]
 [ext_resource type="Script" uid="uid://dytilk1cnsc41" path="res://scripts/cursor_bar.gd" id="3_jbi2t"]
+[ext_resource type="Texture2D" uid="uid://dgudmcacbr5wf" path="res://assets/sprites/yellow-hit-bar-undertale.png" id="4_2bduy"]
 [ext_resource type="Texture2D" uid="uid://c8i7o2o1ul62q" path="res://assets/sprites/undertale-cursor-bar.png" id="4_de413"]
 [ext_resource type="Shader" uid="uid://d3q13o6odvu7" path="res://shader/battle_player_attack.gdshader" id="5_jbi2t"]
 [ext_resource type="AudioStream" uid="uid://li3hse7mv3hq" path="res://assets/SFX/damage-sound.mp3" id="7_de413"]
+[ext_resource type="AudioStream" uid="uid://c42bm70t15hua" path="res://assets/Music/Bonetrousle.mp3" id="8_5s4ms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5s4ms"]
-size = Vector2(4.058348, 24.018)
+size = Vector2(4.017256, 24.018)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaubl"]
+size = Vector2(6.9556837, 24.007593)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s33m"]
+size = Vector2(7.017924, 24.029411)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_de413"]
 shader = ExtResource("5_jbi2t")
@@ -26,15 +34,36 @@ script = ExtResource("1_a2tbc")
 [node name="BackgroundBar" type="Sprite2D" parent="." unique_id=1283716171]
 texture = ExtResource("1_euijo")
 
-[node name="HitBar" type="Area2D" parent="." unique_id=1653761688]
-position = Vector2(-38, 0)
+[node name="GreenHitBar" type="Area2D" parent="." unique_id=1653761688]
+position = Vector2(-52.843895, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="HitBar" unique_id=1781187856]
+[node name="Sprite2D" type="Sprite2D" parent="GreenHitBar" unique_id=1781187856]
 texture = ExtResource("2_a2tbc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBar" unique_id=997328073]
-position = Vector2(0.02671814, 0.07777119)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreenHitBar" unique_id=997328073]
+position = Vector2(0.009433746, 0.07777119)
 shape = SubResource("RectangleShape2D_5s4ms")
+
+[node name="YellowHitBarLeft" type="Area2D" parent="GreenHitBar" unique_id=272318206]
+position = Vector2(-5.9960747, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="GreenHitBar/YellowHitBarLeft" unique_id=196420994]
+texture = ExtResource("4_2bduy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreenHitBar/YellowHitBarLeft" unique_id=310372941]
+position = Vector2(0.51823044, 0.0048127174)
+shape = SubResource("RectangleShape2D_aaubl")
+
+[node name="YellowHitBarRight" type="Area2D" parent="GreenHitBar" unique_id=859443647]
+position = Vector2(6, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="GreenHitBar/YellowHitBarRight" unique_id=856395254]
+texture = ExtResource("4_2bduy")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreenHitBar/YellowHitBarRight" unique_id=1503154582]
+position = Vector2(-0.47541428, 0.04897642)
+shape = SubResource("RectangleShape2D_3s33m")
 
 [node name="CursorBar" type="CharacterBody2D" parent="." unique_id=1344899685]
 script = ExtResource("3_jbi2t")
@@ -66,7 +95,17 @@ shape = SubResource("RectangleShape2D_j268g")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=867633082]
 zoom = Vector2(3.78, 3.78)
 
-[connection signal="body_entered" from="HitBar" to="." method="_on_hit_bar_body_entered"]
-[connection signal="body_exited" from="HitBar" to="." method="_on_hit_bar_body_exited"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=492596667]
+stream = ExtResource("8_5s4ms")
+volume_db = -18.246
+autoplay = true
+parameters/looping = true
+
+[connection signal="body_entered" from="GreenHitBar" to="." method="_on_hit_bar_body_entered"]
+[connection signal="body_exited" from="GreenHitBar" to="." method="_on_hit_bar_body_exited"]
+[connection signal="body_entered" from="GreenHitBar/YellowHitBarLeft" to="." method="_on_yellow_hit_bar_left_body_entered"]
+[connection signal="body_exited" from="GreenHitBar/YellowHitBarLeft" to="." method="_on_yellow_hit_bar_left_body_exited"]
+[connection signal="body_entered" from="GreenHitBar/YellowHitBarRight" to="." method="_on_yellow_hit_bar_right_body_entered"]
+[connection signal="body_exited" from="GreenHitBar/YellowHitBarRight" to="." method="_on_yellow_hit_bar_right_body_exited"]
 [connection signal="body_entered" from="EdgeLeft" to="." method="_on_edge_left_body_entered"]
 [connection signal="body_entered" from="EdgeRight" to="." method="_on_edge_right_body_entered"]

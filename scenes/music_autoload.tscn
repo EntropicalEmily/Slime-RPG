@@ -7,5 +7,4 @@
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=199733803]
 stream = ExtResource("1_26a6q")
 volume_db = -17.333
-autoplay = true
 parameters/looping = true

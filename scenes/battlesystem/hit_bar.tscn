@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://fmewe2ejrjfc"]
+
+[ext_resource type="Texture2D" uid="uid://c6svap312s82k" path="res://assets/sprites/hit-bar-undertale.png" id="1_ypkvm"]
+[ext_resource type="Texture2D" uid="uid://dgudmcacbr5wf" path="res://assets/sprites/yellow-hit-bar-undertale.png" id="2_2gvs3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s4ms"]
+size = Vector2(4.017256, 24.018)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaubl"]
+size = Vector2(6.9556837, 24.007593)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s33m"]
+size = Vector2(7.017924, 24.029411)
+
+[node name="GreenHitBar" type="Area2D" unique_id=1739390747]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2038335458]
+texture = ExtResource("1_ypkvm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=834849593]
+position = Vector2(0.009433746, 0.07777119)
+shape = SubResource("RectangleShape2D_5s4ms")
+
+[node name="YellowHitBarLeft" type="Area2D" parent="." unique_id=1296192607]
+position = Vector2(-5.9960747, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="YellowHitBarLeft" unique_id=1039408610]
+texture = ExtResource("2_2gvs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YellowHitBarLeft" unique_id=1949119281]
+position = Vector2(0.51823044, 0.0048127174)
+shape = SubResource("RectangleShape2D_aaubl")
+
+[node name="YellowHitBarRight" type="Area2D" parent="." unique_id=1094897492]
+position = Vector2(6, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="YellowHitBarRight" unique_id=242442049]
+texture = ExtResource("2_2gvs3")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YellowHitBarRight" unique_id=454249358]
+position = Vector2(-0.47541428, 0.04897642)
+shape = SubResource("RectangleShape2D_3s33m")
